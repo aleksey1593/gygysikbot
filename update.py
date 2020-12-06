@@ -1,0 +1,2 @@
+https://api.telegram.org/bot1413292544:AAHXSYChmR1FJburNGgWVAtEw89i_iIu4r8/getupdates
+https://api.telegram.org/bot1413292544:AAHXSYChmR1FJburNGgWVAtEw89i_iIu4r8/sendmessage?chat_id=812367083&text=ТЕКСТ
