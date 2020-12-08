@@ -19,12 +19,12 @@ class Dbase:
                 lname VARCHAR(40) NOT NULL,
                 idtel INT NOT NULL,
                 status INT NOT NULL);"""
-        return self.cursor.execute(query)
+        return self.cursor.execute(query), self.connection.commit()
 
     def add_user(self, value):
         self.cursor
         query = "INSERT INTO users (fname, lname, idtel, status) VALUES (%s, %s, %s, %s);"
-        return self.cursor.execute(query, value)
+        return self.cursor.execute(query, value), self.connection.commit()
 
     def user_exists(self, value):
         self.cursor
@@ -36,12 +36,12 @@ class Dbase:
     def obnovit_podpisky(self, value):
         self.cursor
         query = "update users set status=1 where idtel=%s;"
-        return self.cursor.execute(query, value)
+        return self.cursor.execute(query, value), self.connection.commit()
 
     def otpiska(self, value):
         self.cursor
         query = "update users set status=0 where idtel=%s;"
-        return self.cursor.execute(query, value)
+        return self.cursor.execute(query, value), self.connection.commit()
 
 
     def all_users(self):
