@@ -11,10 +11,10 @@ class Dbase:
         return self.cursor.close(), self.connection.close()
 
     def database(self):
-        return self.cursor.execute('Create database if not exists Users;'), self.cursor.execute('use Users;')
+        return self.cursor.execute('DROP DATABASE IF EXISTS Users;'), self.cursor.execute('Create database Users;'), self.cursor.execute('use Users;')
 
     def create_table(self):
-        query = """CREATE TABLE IF NOT EXISTS users (
+        query = """CREATE TABLE users (
                 id INT AUTO_INCREMENT PRIMARY KEY, 
                 fname VARCHAR(40) NOT NULL,
                 lname VARCHAR(40) NOT NULL,
