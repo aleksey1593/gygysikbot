@@ -10,12 +10,9 @@ class Dbase:
     def close_connection(self):
         return self.cursor.close(), self.connection.close()
 
-    def database(self):
-        self.connection.autocommit = True
-        self.cursor.execute('DROP DATABASE IF EXISTS Users;')
-        return self.cursor.execute('Create database Users;'), self.cursor.execute('use Users;')
 
     def create_table(self):
+        self.cursor.execute('DROP TABLE IF EXISTS users;')
         query = """CREATE TABLE users (
                 id INT AUTO_INCREMENT PRIMARY KEY, 
                 fname VARCHAR(40) NOT NULL,
@@ -56,8 +53,6 @@ class Dbase:
         self.cursor.execute(query)
         result = self.cursor.fetchall()
         return result
-
-
 
 
 

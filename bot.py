@@ -26,7 +26,6 @@ board = ReplyKeyboardMarkup(resize_keyboard=True).row(button_USD_prodaza, button
 
 
 bot_db = Dbase()
-bot_db.database()
 bot_db.create_table()
 
 # для рассылки
