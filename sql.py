@@ -1,14 +1,10 @@
-import mysql.connector
-from mysql.connector import Error
-from config import db_password
+import psycopg2
+import os
 
 
 class Dbase:
     def __init__(self):
-        self.connection = mysql.connector.connect(
-            user='root',
-            password=db_password
-        )
+        self.connection = psycopg2.connect(os.environ['DATABASE_URL'], sslmode='require')
         self.cursor = self.connection.cursor()
 
     def close_connection(self):

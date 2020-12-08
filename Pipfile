@@ -11,6 +11,9 @@ mysql-connector-python = "*"
 shed = "*"
 schedule = "*"
 aioschedule = "*"
+psycopg2-binary = "*"
+psycopg2 = "*"
+black = "==20.8b1"
 
 [dev-packages]
 

@@ -3,15 +3,13 @@ import logging
 import aioschedule
 
 from sql import Dbase
-from aiogram.types import Message, CallbackQuery, Location, ContentType
-from aiogram.dispatcher.filters import Command, Text
+from aiogram.dispatcher.filters import Text
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.types import KeyboardButton
 from aiogram.types import ReplyKeyboardRemove
 from aiogram.types import ReplyKeyboardMarkup
 from parsing import uznat, banki_kursi
 
-from config import TOKEN, admin_id
 
 API_TOKEN = TOKEN
 logging.basicConfig(level=logging.INFO)
