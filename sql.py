@@ -19,7 +19,6 @@ class Dbase:
                 lname VARCHAR(40) NOT NULL,
                 idtel INT NOT NULL,
                 status INT NOT NULL);"""
-        self.connection.autocommit = True
         return self.cursor.execute(query)
 
     def add_user(self, value):
