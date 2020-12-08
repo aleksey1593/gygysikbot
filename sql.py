@@ -23,7 +23,6 @@ class Dbase:
 
     def add_user(self, value):
         self.cursor
-        self.connection.autocommit = True
         query = "INSERT INTO users (fname, lname, idtel, status) VALUES (%s, %s, %s, %s);"
         return self.cursor.execute(query, value)
 
@@ -35,14 +34,12 @@ class Dbase:
         return bool(result)
 
     def obnovit_podpisky(self, value):
-        self.connection.autocommit = True
         self.cursor
         query = "update users set status=1 where idtel=%s;"
         return self.cursor.execute(query, value)
 
     def otpiska(self, value):
         self.cursor
-        self.connection.autocommit = True
         query = "update users set status=0 where idtel=%s;"
         return self.cursor.execute(query, value)
 
