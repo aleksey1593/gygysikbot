@@ -14,7 +14,7 @@ class Dbase:
     def create_table(self):
         self.cursor.execute('DROP TABLE IF EXISTS users;')
         query = """CREATE TABLE users (
-                id INT AUTO_INCREMENT PRIMARY KEY, 
+                id INT SERIAL PRIMARY KEY, 
                 fname VARCHAR(40) NOT NULL,
                 lname VARCHAR(40) NOT NULL,
                 idtel INT NOT NULL,
