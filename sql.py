@@ -11,7 +11,9 @@ class Dbase:
         return self.cursor.close(), self.connection.close()
 
     def database(self):
-        return self.cursor.execute('DROP DATABASE IF EXISTS Users;'), self.cursor.execute('Create database Users;'), self.cursor.execute('use Users;')
+        self.connection.autocommit = True
+        self.cursor.execute('DROP DATABASE IF EXISTS Users;')
+        return self.cursor.execute('Create database Users;'), self.cursor.execute('use Users;')
 
     def create_table(self):
         query = """CREATE TABLE users (
@@ -20,12 +22,14 @@ class Dbase:
                 lname VARCHAR(40) NOT NULL,
                 idtel INT NOT NULL,
                 status INT NOT NULL);"""
-        return self.cursor.execute(query), self.connection.commit()
+        self.connection.autocommit = True
+        return self.cursor.execute(query)
 
     def add_user(self, value):
         self.cursor
+        self.connection.autocommit = True
         query = "INSERT INTO users (fname, lname, idtel, status) VALUES (%s, %s, %s, %s);"
-        return self.cursor.execute(query, value), self.connection.commit()
+        return self.cursor.execute(query, value)
 
     def user_exists(self, value):
         self.cursor
@@ -35,14 +39,16 @@ class Dbase:
         return bool(result)
 
     def obnovit_podpisky(self, value):
+        self.connection.autocommit = True
         self.cursor
         query = "update users set status=1 where idtel=%s;"
-        return self.cursor.execute(query, value), self.connection.commit()
+        return self.cursor.execute(query, value)
 
     def otpiska(self, value):
         self.cursor
+        self.connection.autocommit = True
         query = "update users set status=0 where idtel=%s;"
-        return self.cursor.execute(query, value), self.connection.commit()
+        return self.cursor.execute(query, value)
 
 
     def all_users(self):
