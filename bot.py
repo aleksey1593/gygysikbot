@@ -1,6 +1,7 @@
 import asyncio
 import logging
 import aioschedule
+import os
 
 from sql import Dbase
 from aiogram.dispatcher.filters import Text
@@ -11,7 +12,7 @@ from aiogram.types import ReplyKeyboardMarkup
 from parsing import uznat, banki_kursi
 
 
-API_TOKEN = TOKEN
+API_TOKEN = os.environ['TOKEN']
 logging.basicConfig(level=logging.INFO)
 bot = Bot(token=API_TOKEN, parse_mode="HTML")
 dp = Dispatcher(bot)
