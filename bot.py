@@ -137,7 +137,7 @@ async def rassylka():
 
 
 async def scheduler():
-    aioschedule.every().day.at("16:06").do(rassylka)
+    aioschedule.every().day.at("16:15").do(rassylka)
     while True:
         await aioschedule.run_pending()
         await asyncio.sleep(1)
